@@ -2,21 +2,21 @@ import { NextRequest, NextResponse } from "next/server";
 import { MIMO_API_KEY } from "@/lib/env";
 
 // ============================================================
-// COMPANY CONTEXT - IntegrAlting
+// COMPANY CONTEXT - IntegrAlting (FINANCE ONLY)
 // ============================================================
 const COMPANY_CONTEXT = `
 COMPANY: IntegrAlting
-- Enterprise AI tools for finance & legal industries
+- Enterprise AI tools for financial services only
 - Products: Private meeting notes, enterprise dictation, on-premise AI
-- Target: CEOs of mid-size financial firms, law firm partners, COOs/CFOs
-- Companies like: Convoy, iFAST, Victory Securities, law firms in HK
+- Target: CEOs of mid-size financial firms, fund managers, wealth managers, bank executives, COOs/CFOs
+- Companies like: Convoy, iFAST, Victory Securities, HSBC, JP Morgan, BlackRock, Goldman Sachs
 - Value prop: Privacy-first AI that keeps sensitive data on-premise
 - Competitors: Granola, Wispr Flow, Otter.ai, Fireflies
 
 PERSONAL STORY ASSETS:
 - Used Gemma 4 on a 4-hour flight without WiFi to debug code (30 sec fix)
 - Gemma 4 beats GPT-4.5 on Arena AI (1452 vs 1444)
-- On-device privacy angle resonates with finance/legal
+- On-device privacy angle resonates with finance professionals
 
 TONE RULES:
 - Semi-casual, direct, positive, peer-to-peer
@@ -25,6 +25,59 @@ TONE RULES:
 - Always lift up, never tear down
 - Have opinions, use first person
 - Vary sentence length
+`;
+
+// ============================================================
+// HUMANIZER RULES (AI Pattern Removal - Enhanced)
+// ============================================================
+const HUMANIZER_RULES = `
+HUMANIZER RULES - Remove AI patterns and ensure authenticity:
+
+BANNED PHRASES (never use):
+- "stands as a testament to"
+- "in a world where"
+- "it's worth noting that"
+- "dive into" / "delve into"
+- "landscape" / "tapestry" / "realm"
+- "harness" / "leverage" (use "use")
+- "revolutionize" / "transform" (be specific instead)
+- "seamlessly" / "robust" / "cutting-edge"
+- "game-changer" / "paradigm shift"
+- "embark on" / "journey"
+- "multifaceted" / "myriad"
+- "stands as" / "serves as" (use "is")
+- Em dash abuse (—) - use sparingly, max 1 per post
+- Forced triplets (3-item lists that feel manufactured)
+- "Actually," "Additionally," "Crucially," "Furthermore"
+- "Not only...but also"
+- "Let's dive in" / "Here's what you need to know"
+
+ABSOLUTE RULES - ZERO TOLERANCE:
+
+1. NO LEGAL REFERENCES WHATSOEVER
+   - Never mention: legal, law firms, lawyers, attorneys, legal tech, litigation, compliance teams (except SEC/FINRA/HKMA as regulatory bodies)
+   - Never say: "finance and legal" or "finance/legal" - say "financial services" or "finance"
+   - Target audience is EXCLUSIVELY finance: fund managers, wealth managers, bank executives, CFOs, COOs, hedge fund leaders, asset managers
+   - This is non-negotiable. IntegrAlting does not serve the legal industry.
+
+2. NEVER INVENT FAKE EXPERIENCES OR STATISTICS
+   - DO NOT fabricate personal stories like "I interviewed 10 finance professionals" or "I asked 50 people in wealth management"
+   - DO NOT make up survey results, interview counts, or research you didn't do
+   - DO NOT invent quotes from unnamed "industry leaders" or "executives"
+   - If referencing data, use real published sources (cite them: "According to McKinsey..." or "SEC data shows...")
+   - Personal stories should only be the REAL ones listed in PERSONAL STORY ASSETS above
+   - Write opinions and observations, not fabricated research
+   - When in doubt: state it as your opinion ("I've noticed..." or "In my experience...") rather than invented data
+
+VOICE RULES:
+- Vary sentence length (mix short punchy with longer flowing)
+- Have actual opinions (not wishy-washy)
+- Use first person ("I" not "one should")
+- Write like you talk (conversational)
+- One idea per paragraph
+- End with a question or CTA, not a summary
+
+FINAL CHECK: Would a real finance executive write this? Does it only mention finance, never legal? Does it avoid invented statistics? If not, rewrite.
 `;
 
 // ============================================================
@@ -126,14 +179,14 @@ IMAGE PROMPT RULES:
 5. Specify color palette (corporate blue, warm tones, high contrast)
 6. Mention if text overlay is needed (keep to 3-5 words max)
 
-IMAGE STYLES THAT WORK FOR FINANCE/LEGAL:
+IMAGE STYLES THAT WORK FOR FINANCE:
 - Minimalist data visualization (clean charts, subtle gradients)
 - Professional abstract (geometric patterns, subtle tech motifs)
 - Conceptual metaphors (shield = security, bridge = connection)
 - Bold typography statements (key quote from post)
 - Subtle tech imagery (circuit patterns, AI motifs, clean lines)
 
-COLOR PSYCHOLOGY FOR FINANCE/LEGAL:
+COLOR PSYCHOLOGY FOR FINANCE:
 - Navy blue: Trust, stability, professionalism
 - Dark green: Growth, wealth, prosperity
 - Gold/amber: Premium, quality, success
@@ -142,38 +195,6 @@ COLOR PSYCHOLOGY FOR FINANCE/LEGAL:
 
 OUTPUT FORMAT:
 Return ONLY the image prompt, ready to paste into an image generation tool. No explanations.`;
-
-// ============================================================
-// HUMANIZER RULES (AI Pattern Removal)
-// ============================================================
-const HUMANIZER_RULES = `
-HUMANIZER RULES - Remove AI patterns:
-
-BANNED PHRASES (never use):
-- "stands as a testament to"
-- "in a world where"
-- "it's worth noting that"
-- "dive into" / "delve into"
-- "landscape" / "tapestry" / "realm"
-- "harness" / "leverage" (use "use")
-- "revolutionize" / "transform" (be specific instead)
-- "seamlessly" / "robust" / "cutting-edge"
-- "game-changer" / "paradigm shift"
-- "embark on" / "journey"
-- "multifaceted" / "myriad"
-- Em dash abuse (—) - use sparingly, max 1 per post
-- Forced triplets (3-item lists that feel manufactured)
-
-VOICE RULES:
-- Vary sentence length (mix short punchy with longer flowing)
-- Have actual opinions (not wishy-washy)
-- Use first person ("I" not "one should")
-- Write like you talk (conversational)
-- One idea per paragraph
-- End with a question or CTA, not a summary
-
-FINAL CHECK: Would a real human in finance/legal write this? If not, rewrite.
-`;
 
 // ============================================================
 // FRAMEWORK PROMPTS
@@ -242,7 +263,7 @@ function buildSystemPrompt(framework: string): string {
       frameworkPrompt = STANLEY_FRAMEWORK;
   }
 
-  return `You are a LinkedIn content expert specializing in enterprise B2B content for finance and legal executives.
+  return `You are a LinkedIn content expert specializing in enterprise B2B content for financial services executives ONLY.
 
 ${COMPANY_CONTEXT}
 
@@ -319,7 +340,7 @@ export async function POST(request: NextRequest) {
               { role: "system", content: IMAGE_PROMPT_SYSTEM },
               {
                 role: "user",
-                content: `Create an image prompt for this LinkedIn post:\n\n${postContent}\n\nTarget audience: CEOs of finance/legal firms in Hong Kong/Asia.\nCompany: IntegrAlting (enterprise AI for finance/legal)`,
+                content: `Create an image prompt for this LinkedIn post:\n\n${postContent}\n\nTarget audience: CEOs of financial services firms in Hong Kong/Asia.\nCompany: IntegrAlting (enterprise AI for finance)`,
               },
             ],
             max_tokens: 300,
@@ -350,14 +371,15 @@ export async function POST(request: NextRequest) {
 ${bucket ? `Content bucket: ${bucket} (Growth/Authority/Conversion)` : ""}
 ${tone ? `Tone: ${tone}` : "Tone: Semi-casual, direct, positive, peer-to-peer"}
 
-Requirements:
+IMPORTANT RULES:
 1. Start with a scroll-stopping hook using one of the formulas
 2. Keep it 1,300-1,400 characters
 3. Include a clear CTA
-4. Use specific numbers and examples where possible
-5. Write like a real person in finance/legal, not AI
+4. Use specific numbers and examples where possible - BUT ONLY REAL ONES. Never invent fake statistics, fake survey results, or fake interview counts like "I interviewed 10 finance professionals" or "I asked 50 wealth managers"
+5. Write like a real person in finance, not AI
 6. Max 1-2 emojis
 7. End with 3-5 relevant hashtags
+8. FINANCE ONLY - never mention legal, law firms, lawyers, or anything legal-related
 
 Generate the post now.`;
 
@@ -416,7 +438,7 @@ Generate the post now.`;
             { role: "system", content: IMAGE_PROMPT_SYSTEM },
             {
               role: "user",
-              content: `Create an image prompt for this LinkedIn post:\n\n${generatedText}\n\nTarget audience: CEOs of finance/legal firms.\nCompany: IntegrAlting (enterprise AI for finance/legal)`,
+              content: `Create an image prompt for this LinkedIn post:\n\n${generatedText}\n\nTarget audience: CEOs of financial services firms.\nCompany: IntegrAlting (enterprise AI for finance)`,
             },
           ],
           max_tokens: 300,
