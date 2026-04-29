@@ -13,18 +13,63 @@ COMPANY: IntegrAlting
 - Value prop: Privacy-first AI that keeps sensitive data on-premise
 - Competitors: Granola, Wispr Flow, Otter.ai, Fireflies
 
-PERSONAL STORY ASSETS:
-- Used Gemma 4 on a 4-hour flight without WiFi to debug code (30 sec fix)
+PERSONAL STORY ASSETS (ONLY use these real stories):
+- Used Gemma 4 on a 4-hour flight without WiFi to debug code (30 sec fix, pushed commit when landed)
+- Used iPhone mirroring to run Gemma on phone
 - Gemma 4 beats GPT-4.5 on Arena AI (1452 vs 1444)
 - On-device privacy angle resonates with finance professionals
+- Built with Opencode (open-source coding tool)
 
 TONE RULES:
-- Semi-casual, direct, positive, peer-to-peer
+- Peer-to-peer, direct, opinionated
 - NEVER criticize firms, compliance teams, or competitors
 - Frame as opportunity, not problem ("new door opening" not "compliance blocking")
 - Always lift up, never tear down
-- Have opinions, use first person
-- Vary sentence length
+
+=================================================================
+VIVIN'S VOICE PROFILE (from real posts - MIRROR THIS EXACTLY)
+=================================================================
+
+OPENERS - Use these patterns (pick one per post):
+1. Contrarian challenge: "Most people think X. It's not."
+2. Hot take: "Everyone's talking about X. That's not the real story."
+3. Challenge: "If you think X? Think again."
+4. Curiosity gap: "The results shocked me."
+5. Four punchy fragments: "AI on a plane. No WiFi. No cloud. Just pure results."
+6. Bold statement: "[Topic]. [Short impact statement]."
+
+SENTENCE RHYTHM:
+- Short punchy one-liner, then longer explanation
+- Paragraphs: 1-2 sentences max (MOBILE FIRST - Vivin reads on phone)
+- Lots of line breaks for scanning
+- Never write dense paragraphs
+
+STRUCTURE PATTERNS (rotate these):
+- Numbered list with bold headline → explanation for each point
+- "Here's what's actually happening:" → bullet points
+- Contrast: "It's not X. It's Y."
+- Choice framework: "Two paths forward: Keep doing X. Or start doing Y."
+- Gap framing: "The gap between where you are and where you want to be..."
+
+NUMBERS & PROOF:
+- Always use specific numbers: $8M, 40%, 30 seconds, 2 pages → 20 books
+- Name real firms: Citadel, BlackRock, Morgan Stanley, Goldman Sachs
+- Reference real people/books when relevant: Morgan Housel's Psychology of Money
+- Real stories > hypotheticals
+
+CLOSERS (always end with ONE of these):
+- Question: "What's one [X] that changed how you [Y]?"
+- CTA: "DM me. I'd love to hear..."
+- Choice: "You have a choice. Continue X. Or start today with Y."
+- "Drop a comment if you want to see how [topic] could work for your team."
+NEVER end with a summary paragraph.
+
+WHAT TO AVOID (Vivin NEVER writes like this):
+- "Pivotal moment" / "rapidly evolving landscape" / "stands at a crossroads"
+- Tech commentator tone (writing ABOUT topics, not FROM experience)
+- Generic thought leadership without personal stakes
+- Dense paragraphs without line breaks
+- Ending with "Excited to see what comes next" (too soft)
 `;
 
 // ============================================================
@@ -369,17 +414,37 @@ export async function POST(request: NextRequest) {
     const userPrompt = `Create a LinkedIn post about: ${topic}
 
 ${bucket ? `Content bucket: ${bucket} (Growth/Authority/Conversion)` : ""}
-${tone ? `Tone: ${tone}` : "Tone: Semi-casual, direct, positive, peer-to-peer"}
+${tone ? `Tone: ${tone}` : "Tone: Direct, opinionated, peer-to-peer"}
 
-IMPORTANT RULES:
-1. Start with a scroll-stopping hook using one of the formulas
-2. Keep it 1,300-1,400 characters
-3. Include a clear CTA
-4. Use specific numbers and examples where possible - BUT ONLY REAL ONES. Never invent fake statistics, fake survey results, or fake interview counts like "I interviewed 10 finance professionals" or "I asked 50 wealth managers"
-5. Write like a real person in finance, not AI
-6. Max 1-2 emojis
-7. End with 3-5 relevant hashtags
-8. FINANCE ONLY - never mention legal, law firms, lawyers, or anything legal-related
+WRITING THIS POST - FOLLOW VIVIN'S VOICE EXACTLY:
+
+OPENING (pick one):
+- Contrarian: "Most people think X. It's not."
+- Hot take: "Everyone's talking about X. That's not the real story."
+- Challenge: "If you think X? Think again."
+- Four punchy fragments: "X. Y. Z. Just [result]."
+
+BODY:
+- Short paragraphs (1-2 sentences max) with line breaks
+- Use numbered lists with bold headlines when listing points
+- Include specific numbers ($, %, timeframes)
+- Name real firms when relevant (Citadel, BlackRock, Goldman Sachs)
+- Bridge abstract to practical: "In business, this means..."
+
+CLOSING (pick one):
+- Question: "What's one [X] that changed how you [Y]?"
+- CTA: "DM me. I'd love to hear..."
+- Choice: "You have a choice. Continue X. Or start today with Y."
+NEVER end with a summary paragraph.
+
+ABSOLUTE RULES:
+1. FINANCE ONLY - no legal, no law firms, no lawyers
+2. NEVER fake experiences or statistics - no "I interviewed 10 people" or "50 executives said"
+3. Only use real stories from PERSONAL STORY ASSETS
+4. Keep it 1,300-1,400 characters
+5. Max 1-2 emojis
+6. End with 3-5 hashtags
+7. Mobile-first: lots of line breaks, short paragraphs
 
 Generate the post now.`;
 
