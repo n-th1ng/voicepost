@@ -70,6 +70,11 @@ WHAT TO AVOID (Vivin NEVER writes like this):
 - Generic thought leadership without personal stakes
 - Dense paragraphs without line breaks
 - Ending with "Excited to see what comes next" (too soft)
+- LECTURING / "GYAAN" TONE - Never sound like you're teaching a class or giving unsolicited advice
+  - Don't say "Here's what you should do" or "The key lesson is" or "Remember this"
+  - Share experiences, not instructions
+  - Write like you're talking to a friend over coffee, not presenting at a conference
+  - Observations > Advice. Stories > Lessons.
 `;
 
 // ============================================================
@@ -436,6 +441,11 @@ CLOSING (pick one):
 - CTA: "DM me. I'd love to hear..."
 - Choice: "You have a choice. Continue X. Or start today with Y."
 NEVER end with a summary paragraph.
+
+NO GYAAN:
+- Don't lecture or teach. Share experiences, not instructions.
+- Observations > Advice. Stories > Lessons.
+- Write like talking to a friend, not presenting at a conference.
 
 ABSOLUTE RULES:
 1. FINANCE ONLY - no legal, no law firms, no lawyers
