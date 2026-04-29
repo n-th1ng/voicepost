@@ -282,6 +282,38 @@ DANIEL KORENBLUM'S 7-STEP INBOUND:
 `;
 
 // ============================================================
+// BRIDGE FRAMEWORK (Tech Builders → Finance Execs)
+// ============================================================
+const BRIDGE_FRAMEWORK = `
+BRIDGE CONTENT FRAMEWORK (Audience Growth Strategy):
+Purpose: Attract finance executives while keeping tech builder audience engaged
+
+AUDIENCE BRIDGE PATTERN:
+- Tech builders care: open-source, self-hosting, API design, developer experience
+- Finance execs care: compliance, data privacy, ROI, risk reduction
+- Bridge content hits BOTH: technical credibility + business impact
+
+WRITING BRIDGE CONTENT:
+1. Open with universal hook (works for both audiences)
+2. Technical detail that impresses devs
+3. Business implication that resonates with finance
+4. Specific use case that bridges both worlds
+
+EXAMPLE BRIDGE STRUCTURE:
+- "I used Gemma on a flight with no WiFi" (tech: open-source, finance: no data leaves device)
+- "40% reduction in note-taking time" (both care about efficiency)
+- "Citadel and BlackRock are doing X" (credibility for finance, curiosity for tech)
+
+BRIDGE TOPICS THAT WORK:
+- On-premise AI (tech: runs locally, finance: compliance)
+- Open-source in regulated industries (tech: freedom, finance: control)
+- Data privacy as competitive advantage (both care, different reasons)
+- Cost comparison: cloud vs self-hosted (tech: infra savings, finance: budget control)
+
+AUDIENCE MIX: Start with 60% tech-forward, 40% finance-specific, then shift over time.
+`;
+
+// ============================================================
 // CEO TARGETING PSYCHOLOGY
 // ============================================================
 const CEO_PSYCHOLOGY = `
@@ -308,6 +340,9 @@ function buildSystemPrompt(framework: string): string {
       break;
     case "daniel":
       frameworkPrompt = DANIEL_FRAMEWORK;
+      break;
+    case "bridge":
+      frameworkPrompt = BRIDGE_FRAMEWORK;
       break;
     default:
       frameworkPrompt = STANLEY_FRAMEWORK;

@@ -88,6 +88,7 @@ export default function GeneratePage() {
               { id: "stanley", label: "Stanley", desc: "8-step growth" },
               { id: "brandon", label: "Brandon", desc: "3-bucket strategy" },
               { id: "daniel", label: "Daniel", desc: "7-step inbound" },
+              { id: "bridge", label: "Bridge", desc: "Tech → Finance" },
             ].map((f) => (
               <button
                 key={f.id}
@@ -111,7 +112,7 @@ export default function GeneratePage() {
             Content Bucket
           </label>
           <div className="flex gap-2">
-            {["Growth", "Authority", "Conversion"].map((b) => (
+            {[\"Growth\", \"Authority\", \"Conversion\", \"Bridge\"].map((b) => (
               <button
                 key={b}
                 onClick={() => setBucket(bucket === b ? "" : b)}
@@ -125,6 +126,11 @@ export default function GeneratePage() {
               </button>
             ))}
           </div>
+          {framework === "bridge" && (
+            <p className="text-xs text-slate-500 mt-2">
+              💡 Bridge = Tech builders + Finance execs. Start 60/40, shift over time.
+            </p>
+          )}
         </div>
 
         {/* Generate Button */}
