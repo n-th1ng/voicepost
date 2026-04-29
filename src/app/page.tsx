@@ -7,13 +7,26 @@ export default function Home() {
       <div className="text-center py-12">
         <h1 className="text-4xl font-bold mb-4">LinkedIn Content Engine</h1>
         <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-          Generate scroll-stopping posts for finance & legal executives. 
+          Generate scroll-stopping posts for finance executives. 
           Built on proven frameworks from Stanley, Brandon, and Daniel.
         </p>
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Link
+          href="/viral"
+          className="group p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-orange-500/50 hover:bg-slate-900/50 transition-all"
+        >
+          <div className="text-2xl mb-3">🔥</div>
+          <h2 className="text-lg font-semibold mb-1 group-hover:text-orange-400 transition-colors">
+            Viral Ideas
+          </h2>
+          <p className="text-sm text-slate-400">
+            Find trending angles and scroll-stopping hooks
+          </p>
+        </Link>
+
         <Link
           href="/generate"
           className="group p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-blue-500/50 hover:bg-slate-900/50 transition-all"
