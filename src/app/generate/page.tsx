@@ -112,7 +112,7 @@ export default function GeneratePage() {
             Content Bucket
           </label>
           <div className="flex gap-2">
-            {[\"Growth\", \"Authority\", \"Conversion\", \"Bridge\"].map((b) => (
+            {["Growth", "Authority", "Conversion", "Bridge"].map((b) => (
               <button
                 key={b}
                 onClick={() => setBucket(bucket === b ? "" : b)}
