@@ -124,6 +124,7 @@ VOICE RULES:
 - Write like you talk (conversational)
 - One idea per paragraph
 - End with a question or CTA, not a summary
+- NEVER GIVE ADVICE — share experiences and observations only. If the reader walks away thinking "I should do X," the post failed.
 
 FINAL CHECK: Would a real finance executive write this? Does it only mention finance, never legal? Does it avoid invented statistics? If not, rewrite.
 `;

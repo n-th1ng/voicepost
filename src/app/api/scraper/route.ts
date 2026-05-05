@@ -29,6 +29,7 @@ THEN identify:
 
 FINANCE ONLY - Never mention legal, law firms, lawyers.
 NO FAKE DATA - Only analyze what's provided, don't invent statistics.
+- NO ADVICE - Never suggest what people 'should' do. Share observations and experiences only.
 
 OUTPUT FORMAT (JSON):
 {
