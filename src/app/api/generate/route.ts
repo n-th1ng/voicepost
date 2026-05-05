@@ -14,9 +14,7 @@ COMPANY: IntegrAlting
 - Competitors: Granola, Wispr Flow, Otter.ai, Fireflies
 
 PERSONAL STORY ASSETS (ONLY use these real stories):
-- Used Gemma 4 on a 4-hour flight without WiFi to debug code (30 sec fix, pushed commit when landed)
-- Used iPhone mirroring to run Gemma on phone
-- Gemma 4 beats GPT-4.5 on Arena AI (1452 vs 1444)
+- Used iPhone mirroring to run AI models on phone without cloud
 - On-device privacy angle resonates with finance professionals
 - Built with Opencode (open-source coding tool)
 
@@ -96,7 +94,7 @@ BANNED PHRASES (never use):
 - "embark on" / "journey"
 - "multifaceted" / "myriad"
 - "stands as" / "serves as" (use "is")
-- Em dash abuse (—) - use sparingly, max 1 per post
+- Em dash abuse (—) - FORBIDDEN. Never use em dashes. Use commas, periods, or parentheses instead.
 - Forced triplets (3-item lists that feel manufactured)
 - "Actually," "Additionally," "Crucially," "Furthermore"
 - "Not only...but also"
@@ -300,7 +298,6 @@ WRITING BRIDGE CONTENT:
 4. Specific use case that bridges both worlds
 
 EXAMPLE BRIDGE STRUCTURE:
-- "I used Gemma on a flight with no WiFi" (tech: open-source, finance: no data leaves device)
 - "40% reduction in note-taking time" (both care about efficiency)
 - "Citadel and BlackRock are doing X" (credibility for finance, curiosity for tech)
 
@@ -533,6 +530,65 @@ Generate the post now.`;
       );
     }
 
+    // HUMANIZER AUDIT PASS - Remove fabricated content before returning
+    const auditResponse = await fetch(
+      "https://token-plan-sgp.xiaomimimo.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${MIMO_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: "mimo-v2-omni",
+          messages: [
+            {
+              role: "system",
+              content: `You are a strict editor auditing LinkedIn posts for authenticity.
+
+YOUR JOB: Find and remove ALL fabricated content. Return the cleaned post.
+
+ABSOLUTE RULES:
+1. REMOVE any invented story, scenario, or anecdote that didn't actually happen
+   - Examples of FAKE: "$47M meeting nobody recorded", "A fund manager told me", "I asked 5 wealth managers", "A bank CEO said", "One client shared", "An executive told me", "Imagine you're in a meeting where..."
+   - These are FICTION. Remove them entirely.
+
+2. REMOVE any fabricated statistics or survey data
+   - Examples: "I interviewed 10 professionals", "50 executives said", "80% of fund managers agree"
+   - If it's not from a real cited source (McKinsey, SEC, published research), it's fake.
+
+3. REMOVE vague attributions that hide fabrication
+   - "Industry leaders say", "Experts agree", "Many professionals have noticed"
+   - Replace with: state as opinion ("I've noticed", "In my view") or remove
+
+4. KEEP only:
+   - Real personal stories from the original prompt's PERSONAL STORY ASSETS
+   - Opinions framed as opinions ("I think...", "In my experience...")
+   - References to real, publicly known companies (Citadel, BlackRock, etc.) as examples, not as attributed quotes
+   - Real published data with sources
+
+5. After removing fake content, tighten the post so it still flows naturally.
+   - Don't leave gaps or broken transitions
+   - The post should read as if the fake content was never there
+
+6. If the entire post is built on a fake premise, strip the fake hook/scenario and rebuild around whatever real point it was trying to make.
+
+OUTPUT: Return ONLY the cleaned post text. No commentary, no explanation.`
+            },
+            {
+              role: "user",
+              content: `Audit this LinkedIn post for fabricated content. Remove all fake stories, invented statistics, and made-up scenarios:\n\n${generatedText}`,
+            },
+          ],
+          max_tokens: 1000,
+          temperature: 0.3,
+        }),
+      }
+    );
+
+    const auditData = await auditResponse.json();
+    const auditedText = auditData.choices?.[0]?.message?.content || generatedText;
+
     // Auto-generate image prompt for the post
     const imagePromptResponse = await fetch(
       "https://token-plan-sgp.xiaomimimo.com/v1/chat/completions",
@@ -548,7 +604,7 @@ Generate the post now.`;
             { role: "system", content: IMAGE_PROMPT_SYSTEM },
             {
               role: "user",
-              content: `Create an image prompt for this LinkedIn post:\n\n${generatedText}\n\nTarget audience: CEOs of financial services firms.\nCompany: IntegrAlting (enterprise AI for finance)`,
+              content: `Create an image prompt for this LinkedIn post:\n\n${auditedText}\n\nTarget audience: CEOs of financial services firms.\nCompany: IntegrAlting (enterprise AI for finance)`,
             },
           ],
           max_tokens: 300,
@@ -561,7 +617,7 @@ Generate the post now.`;
     const imagePrompt = imageData.choices?.[0]?.message?.content || "";
 
     return NextResponse.json({
-      post: generatedText,
+      post: auditedText,
       imagePrompt: imagePrompt,
     });
   } catch (error) {

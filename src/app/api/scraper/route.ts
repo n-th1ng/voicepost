@@ -88,74 +88,80 @@ function buildSearchQueries(topic: string): string[] {
 // MOCK VIRAL DATA (fallback when scraping fails)
 // ============================================
 function getMockViralData(topic: string): any {
+  // Topic-specific hook templates (not hardcoded posts)
+  const topicLower = topic.toLowerCase();
+  
+  // Generate topic-relevant hooks dynamically
+  const hooks = [
+    {
+      excerpt: `Every finance executive is talking about ${topic}. Most are getting it wrong...`,
+      hook: `Every finance executive is talking about ${topic}. Most are getting it wrong.`,
+      author: "@finance_strategy",
+      engagement: "High",
+      whyItWorked: `Calls out the crowd chasing ${topic} without understanding it. Creates debate among those doing it right.`,
+      viralityScore: 8,
+      linkedinAngle: `Point out what everyone gets wrong about ${topic}. What's the nuance most people miss? Share what you've actually learned from experience.`
+    },
+    {
+      excerpt: `I spent 6 months testing ${topic} with my team. Here's what actually moved the needle...`,
+      hook: `I spent 6 months testing ${topic}. Here's what actually moved the needle.`,
+      author: "@hedgefund_ops",
+      engagement: "High",
+      whyItWorked: "Specific timeline + testing angle = credibility. People want real results, not theory.",
+      viralityScore: 9,
+      linkedinAngle: `If you've actually experimented with ${topic}, share honest results. What worked? What didn't? Specific numbers beat vague claims every time.`
+    },
+    {
+      excerpt: `The gap between what finance firms say about ${topic} and what they actually do is massive...`,
+      hook: `The gap between what firms say about ${topic} and what they actually do is massive.`,
+      author: "@fintech_reality",
+      engagement: "High",
+      whyItWorked: "Hypocrisy angle drives comments. People love calling out performative behavior in their industry.",
+      viralityScore: 8,
+      linkedinAngle: `Call out the disconnect in ${topic}. What do firms brag about publicly vs what happens behind closed doors? Be specific but fair.`
+    },
+    {
+      excerpt: `${topic} isn't the answer everyone thinks it is. The real edge is something nobody's talking about...`,
+      hook: `${topic} isn't the answer everyone thinks it is.`,
+      author: "@wealthmgr_insider",
+      engagement: "Medium",
+      whyItWorked: "Contrarian take on a trending topic. Challenges groupthink and positions the author as someone who sees deeper.",
+      viralityScore: 7,
+      linkedinAngle: `What's the real story behind ${topic}? What's the piece that nobody's connecting? Share a perspective that challenges the hype without being negative.`
+    },
+    {
+      excerpt: `3 finance leaders told me the same thing about ${topic}. It changed how I think about it entirely...`,
+      hook: `3 finance leaders told me the same thing about ${topic}. It changed my thinking entirely.`,
+      author: "@bank_exec_tips",
+      engagement: "High",
+      whyItWorked: "Specific conversation count + insight revelation. Feels like insider knowledge being shared.",
+      viralityScore: 8,
+      linkedinAngle: `What have actual finance executives told you about ${topic} that surprised you? Real conversations beat manufactured stats. If you don't have those stories, write opinions instead.`
+    },
+  ];
+  
   return {
-    posts: [
-      {
-        excerpt: "I fired my biggest client last year. Here's what happened...",
-        hook: "I fired my biggest client last year.",
-        author: "@finance_leaders",
-        engagement: "High",
-        whyItWorked: "Contrarian action + curiosity gap. People want to know what happened next.",
-        viralityScore: 9,
-        linkedinAngle: "Share a real decision that went against conventional wisdom in finance. What did you do that everyone said was crazy?"
-      },
-      {
-        excerpt: "Your compliance team isn't your enemy. They're your competitive edge...",
-        hook: "Your compliance team isn't your enemy.",
-        author: "@wealthmgr_tip",
-        engagement: "High",
-        whyItWorked: "Reframes a common pain point as an opportunity. Makes people reconsider their perspective.",
-        viralityScore: 8,
-        linkedinAngle: "Reframe something finance pros complain about as a hidden advantage. Turn the narrative."
-      },
-      {
-        excerpt: "The best fund managers I know do ONE thing differently: they track saves, not likes...",
-        hook: "The best fund managers I know do ONE thing differently.",
-        author: "@hedgefund_hub",
-        engagement: "High",
-        whyItWorked: "Specific audience callout + insider knowledge + contrarian metric.",
-        viralityScore: 8,
-        linkedinAngle: "What do the BEST people in finance do that average ones don't? Share specific behaviors, not generic advice."
-      },
-      {
-        excerpt: "Nobody talks about this, but the real edge in banking isn't AI. It's who owns the data...",
-        hook: "Nobody talks about this, but the real edge in banking isn't AI.",
-        author: "@fintech_insider",
-        engagement: "Medium",
-        whyItWorked: "Pokes at hype (AI) and reveals 'hidden truth'. Creates debate.",
-        viralityScore: 7,
-        linkedinAngle: "Challenge the hype. What's everyone obsessing over that's NOT actually the answer? What IS?"
-      },
-      {
-        excerpt: "3 years ago I was managing $50M. Today it's $500M. Same strategy, different mindset...",
-        hook: "3 years ago I was managing $50M. Today it's $500M.",
-        author: "@fundmanager_daily",
-        engagement: "High",
-        whyItWorked: "Specific numbers create credibility. Transformation story with timeline.",
-        viralityScore: 9,
-        linkedinAngle: "Share a real transformation with specific numbers. What changed? Be honest about what actually moved the needle."
-      },
-    ],
+    posts: hooks,
     analysis: {
       trendingThemes: [
         `${topic} and its impact on finance operations`,
-        "The gap between what finance pros say vs do",
-        "Transformation stories with specific numbers",
-        "Contrarian takes on popular industry beliefs",
+        `The gap between what finance pros say vs do about ${topic}`,
+        `Honest results stories around ${topic}`,
+        `Contrarian takes on ${topic} hype`,
       ],
       winningHooks: [
-        `I [did something unexpected] about ${topic}...`,
-        "Nobody talks about this, but...",
-        "The best [role] I know do ONE thing differently:",
-        "[Specific number] years ago vs today:",
-        "Your [pain point] isn't a problem. It's an advantage.",
+        `Every finance executive is talking about ${topic}. Most are wrong...`,
+        `I spent [time] testing ${topic}. Here's what actually worked...`,
+        `The gap between what firms say about ${topic} and what they do...`,
+        `${topic} isn't what everyone thinks it is.`,
+        `3 finance leaders told me the same thing about ${topic}...`,
       ],
-      engagementPatterns: "Posts that create debate or challenge conventional wisdom get the most comments. Transformation stories with specific numbers get the most saves. Insider knowledge ('nobody talks about this') drives shares.",
-      contentGaps: `Most ${topic} content is generic advice. What's missing: real war stories, specific numbers, honest failures, contrarian takes backed by experience.`,
+      engagementPatterns: "Posts that challenge the crowd on trending topics get the most comments. Honest testing stories with timelines get the most saves. Insider conversations ('3 leaders told me') drive shares.",
+      contentGaps: `Most ${topic} content is surface-level take. What's missing: honest testing results, specific outcomes, contrarian takes backed by experience, real conversations with finance leaders.`,
       recommendedAngles: [
-        `Share a real decision about ${topic} that went against conventional wisdom`,
-        `Reframe ${topic} from a pain point to an advantage`,
-        `Challenge the hype around ${topic} - what's the ACTUAL answer?`,
+        `Share what you actually learned testing ${topic} (with timeline and results)`,
+        `Call out what everyone gets wrong about ${topic} without being negative`,
+        `Reframe ${topic} from hype to practical reality for finance firms`,
       ],
     },
   };
