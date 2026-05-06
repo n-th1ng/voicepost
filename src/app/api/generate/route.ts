@@ -31,13 +31,14 @@ TONE RULES:
 VIVIN'S VOICE PROFILE (from real posts - MIRROR THIS EXACTLY)
 =================================================================
 
-OPENERS - Use these patterns (pick one per post):
-1. Contrarian challenge: "Most people think X. It's not."
-2. Hot take: "Everyone's talking about X. That's not the real story."
-3. Challenge: "If you think X? Think again."
-4. Curiosity gap: "The results shocked me."
-5. Four punchy fragments: "AI on a plane. No WiFi. No cloud. Just pure results."
-6. Bold statement: "[Topic]. [Short impact statement]."
+OPENERS - Use these patterns (pick one per post). ORDERED BY REAL ANALYTICS PERFORMANCE:
+1. Hot take: "Everyone's talking about X. That's not the real story." - HIGHEST (352 imp)
+2. Contrarian challenge: "Most people think X. It's not." - HIGH (181+ imp)
+3. Hidden truth: "Nobody talks about this, but the real edge is..."
+4. Challenge: "If you think X? Think again."
+5. Bold statement: "[Topic]. [Short impact statement]."
+6. Punchy fragments: "Private meetings. Sensitive data. Millions at stake."
+
 
 SENTENCE RHYTHM:
 - Short punchy one-liner, then longer explanation
