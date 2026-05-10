@@ -2,29 +2,41 @@ import { NextRequest, NextResponse } from "next/server";
 import { MIMO_API_KEY } from "@/lib/env";
 
 // ============================================================
-// COMPANY CONTEXT - IntegrAlting (FINANCE ONLY)
+// COMPANY CONTEXT - DeepLens AI (DEAL INTELLIGENCE)
 // ============================================================
 const COMPANY_CONTEXT = `
-COMPANY: IntegrAlting
-- Enterprise AI tools for financial services only
-- Products: Private meeting notes, enterprise dictation, on-premise AI
-- Target: CEOs of mid-size financial firms, fund managers, wealth managers, bank executives, COOs/CFOs
-- Target accounts: Convoy, iFAST, Victory Securities, WeLab, Futu, Bright Smart Securities
-- Value prop: Privacy-first AI that keeps sensitive data on-premise
-- Competitors: Granola, Wispr Flow, Otter.ai, Fireflies
+COMPANY: DeepLens AI
+- Autonomous Deal Intelligence Platform for M&A due diligence
+- Product: AI agents that scan public data sources, analyze targets, and deliver intelligence reports in 24 hours
+- Price: $15,000/year vs Kroll at $75,000-200,000 per deal
+- Mission: Democratize institutional-grade due diligence for every financial decision-maker
+- Competitors: Kroll ($75-200K/deal, 4-8 weeks), FTI Consulting, Nardello, Palantir ($1M+), Middesk, Sayari, Enigma
 
-CONTENT SOURCE: Vivin is a sharp tech commentator, not a finance executive.
-- He reports on tech news (AI agents, on-device models, fintech) and adds a contrarian angle
-- He analyzes trends and spots patterns others miss
-- He has strong opinions about where tech is heading
-- DO NOT fabricate personal finance/tech experiences
-- When no real personal story exists, write opinionated news commentary instead
+TARGET CUSTOMERS:
+- PRIMARY: Independent sponsors (fundless PE) — 3,000+ active in US, evaluating 200+ deals/year, need speed and cost savings
+- SECONDARY: Small PE firms ($100-500M AUM), family offices
+- TERTIARY: Regional banks, investment banks
+- Persona: Experienced deal makers who can't afford Kroll for every deal, doing diligence manually, getting burned by hidden risks
+
+CONTENT SOURCE: Vivin is building DeepLens AI — a solo founder shipping fast.
+- He shares what he learns building the company: sales, tech, market insights
+- He spots patterns in deal intelligence, due diligence failures, and M&A mistakes
+- He references real cases (WeWork $47B, Theranos, FTX, Wirecard) where red flags were visible in public data
+- He has strong opinions about why institutions miss signals that AI can catch
+- DO NOT fabricate founder experiences — if Vivin hasn't experienced it, frame as opinion or analysis
 - Reference real news, real companies, real data — then add Vivin's take
+
+KEY NARRATIVES TO WEAVE IN:
+- "Every significant financial fraud had red flags visible in public data before the collapse"
+- "Due diligence that cost $75K and took 6 weeks — now $15K in 24 hours"
+- "The gap between what databases show and what autonomous agents find"
+- "Independent sponsors get burned because they can't afford Kroll for every deal"
+- "Institutional memory compounds — every report makes the next one smarter"
 
 TONE RULES:
 - Peer-to-peer, direct, opinionated
-- NEVER criticize firms, compliance teams, or competitors
-- Frame as opportunity, not problem ("new door opening" not "compliance blocking")
+- NEVER criticize firms or competitors by name — frame as "the old way" vs "what's possible now"
+- Frame as opportunity, not problem
 - Always lift up, never tear down
 
 =================================================================
@@ -114,7 +126,7 @@ ABSOLUTE RULES - ZERO TOLERANCE:
    - Never mention: legal, law firms, lawyers, attorneys, legal tech, litigation, compliance teams (except SEC/FINRA/HKMA as regulatory bodies)
    - Never say: "finance and legal" or "finance/legal" - say "financial services" or "finance"
    - Target audience is EXCLUSIVELY finance: fund managers, wealth managers, bank executives, CFOs, COOs, hedge fund leaders, asset managers
-   - This is non-negotiable. IntegrAlting does not serve the legal industry.
+   - This is non-negotiable. DeepLens does not serve the legal industry.
 
 2. NEVER INVENT FAKE EXPERIENCES OR STATISTICS
    - DO NOT fabricate personal stories like "I interviewed 10 finance professionals" or "I asked 50 people in wealth management"
@@ -432,7 +444,7 @@ export async function POST(request: NextRequest) {
               { role: "system", content: IMAGE_PROMPT_SYSTEM },
               {
                 role: "user",
-                content: `Create an image prompt for this LinkedIn post:\n\n${postContent}\n\nTarget audience: CEOs of financial services firms in Hong Kong/Asia.\nCompany: IntegrAlting (enterprise AI for finance)`,
+                content: `Create an image prompt for this LinkedIn post:\n\n${postContent}\n\nTarget audience: Independent sponsors, PE professionals, M&A deal makers.\nCompany: DeepLens AI (autonomous deal intelligence platform)`,
               },
             ],
             max_tokens: 300,
@@ -621,7 +633,7 @@ OUTPUT: Return ONLY the cleaned post text. No commentary, no explanation.`
             { role: "system", content: IMAGE_PROMPT_SYSTEM },
             {
               role: "user",
-              content: `Create an image prompt for this LinkedIn post:\n\n${auditedText}\n\nTarget audience: CEOs of financial services firms.\nCompany: IntegrAlting (enterprise AI for finance)`,
+              content: `Create an image prompt for this LinkedIn post:\n\n${auditedText}\n\nTarget audience: Independent sponsors, PE professionals, M&A deal makers.\nCompany: DeepLens AI (autonomous deal intelligence platform)`,
             },
           ],
           max_tokens: 300,
