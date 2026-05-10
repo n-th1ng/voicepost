@@ -9,7 +9,7 @@ COMPANY: IntegrAlting
 - Enterprise AI tools for financial services only
 - Products: Private meeting notes, enterprise dictation, on-premise AI
 - Target: CEOs of mid-size financial firms, fund managers, wealth managers, bank executives, COOs/CFOs
-- Companies like: Convoy, iFAST, Victory Securities, HSBC, JP Morgan, BlackRock, Goldman Sachs
+- Target accounts: Convoy, iFAST, Victory Securities, WeLab, Futu, Bright Smart Securities
 - Value prop: Privacy-first AI that keeps sensitive data on-premise
 - Competitors: Granola, Wispr Flow, Otter.ai, Fireflies
 
@@ -54,10 +54,9 @@ STRUCTURE PATTERNS (rotate these):
 - Gap framing: "The gap between where you are and where you want to be..."
 
 NUMBERS & PROOF:
-- Always use specific numbers: $8M, 40%, 30 seconds, 2 pages → 20 books
-- Name real firms: Citadel, BlackRock, Morgan Stanley, Goldman Sachs
-- Reference real people/books when relevant: Morgan Housel's Psychology of Money
-- Real stories > hypotheticals
+- Use specific numbers when possible: percentages, timeframes, metrics
+- Reference real data or studies when relevant
+- Only mention specific companies if the topic naturally requires it (e.g. "Apple just announced X")
 
 CLOSERS (always end with ONE of these):
 - Question: "What's one [X] that changed how you [Y]?"
@@ -65,6 +64,12 @@ CLOSERS (always end with ONE of these):
 - Choice: "You have a choice. Continue X. Or start today with Y."
 - "Drop a comment if you want to see how [topic] could work for your team."
 NEVER end with a summary paragraph.
+
+ABSOLUTE RULE: NO NAME-DROPPING
+- Do NOT force company names (Citadel, BlackRock, Goldman Sachs, Morgan Stanley) into posts
+- Only mention a company if the topic is literally about that company
+- Default to concepts, patterns, ideas — not brand lists
+- Posts should stand on the insight, not on who you name-drop
 
 WHAT TO AVOID (Vivin NEVER writes like this):
 - "Pivotal moment" / "rapidly evolving landscape" / "stands at a crossroads"
@@ -304,7 +309,7 @@ WRITING BRIDGE CONTENT:
 
 EXAMPLE BRIDGE STRUCTURE:
 - "40% reduction in note-taking time" (both care about efficiency)
-- "Citadel and BlackRock are doing X" (credibility for finance, curiosity for tech)
+- Specific use case that bridges both worlds
 
 BRIDGE TOPICS THAT WORK:
 - On-premise AI (tech: runs locally, finance: compliance)
@@ -460,6 +465,14 @@ ${tone ? `Tone: ${tone}` : "Tone: Direct, opinionated, peer-to-peer"}
 
 WRITING THIS POST - FOLLOW VIVIN'S VOICE EXACTLY:
 
+WRITING STYLE (match the viral posts exactly):
+- Lowercase throughout — no caps at sentence starts
+- Ultra-short lines — sometimes just 3-5 words per line
+- Lots of blank lines between thoughts (mobile scanning)
+- Casual language — "bro", "fly off the shelves", "darn proud"
+- Periods inside short lines create punchy rhythm: "stock down 60%." "revenue doubled."
+- This is NOT corporate LinkedIn — it's raw, real, first-person
+
 OPENING (pick one):
 - Contrarian: "Most people think X. It's not."
 - Hot take: "Everyone's talking about X. That's not the real story."
@@ -469,9 +482,8 @@ OPENING (pick one):
 BODY:
 - Short paragraphs (1-2 sentences max) with line breaks
 - Use numbered lists with bold headlines when listing points
-- Include specific numbers ($, %, timeframes)
-- Name real firms when relevant (Citadel, BlackRock, Goldman Sachs)
-- Bridge abstract to practical: "In business, this means..."
+- Include specific numbers ($, %, timeframes) when relevant
+- Keep it conversational — write like you're talking to a friend, not presenting at a conference
 
 CLOSING (pick one):
 - Question: "What's one [X] that changed how you [Y]?"
