@@ -39,7 +39,7 @@ export default function HomePage() {
       <section className="px-6 md:px-10 pt-20 md:pt-32 pb-20 text-center max-w-4xl mx-auto">
         <div className="inline-flex items-center gap-2 bg-gray-800/50 border border-gray-700/50 rounded-full px-4 py-1.5 mb-8 text-sm text-gray-300">
           <Sparkles className="w-4 h-4 text-purple-400" />
-          Built for finance & legal professionals
+          Built for finance professionals
         </div>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
           Generate LinkedIn posts

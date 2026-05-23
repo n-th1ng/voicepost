@@ -114,7 +114,7 @@ BANNED PHRASES (never use):
 - "embark on" / "journey"
 - "multifaceted" / "myriad"
 - "stands as" / "serves as" (use "is")
-- Em dash abuse (—) - FORBIDDEN. Never use em dashes. Use commas, periods, or parentheses instead.
+- Em dash abuse (-) - FORBIDDEN. Never use em dashes. Use commas, periods, or parentheses instead.
 - Forced triplets (3-item lists that feel manufactured)
 - "Actually," "Additionally," "Crucially," "Furthermore"
 - "Not only...but also"
@@ -578,29 +578,30 @@ Generate the post now.`;
 YOUR JOB: Find and remove ALL fabricated content. Return the cleaned post.
 
 ABSOLUTE RULES:
-1. REMOVE any invented story, scenario, or anecdote that didn't actually happen
-   - Examples of FAKE: "$47M meeting nobody recorded", "A fund manager told me", "I asked 5 wealth managers", "A bank CEO said", "One client shared", "An executive told me", "Imagine you're in a meeting where..."
+1. EM DASH (—) - ZERO TOLERANCE. Search the entire post for "—". If found, replace with comma, period, or restructure. This is the #1 most obvious AI signal. The post must contain ZERO em dashes.
+2. REMOVE any invented story, scenario, or anecdote that didn't actually happen
+   - Examples of FAKE: "$47M meeting nobody recorded", "A fund manager told me", "I asked 5 wealth managers", "A bank CEO said", "One client shared", "An executive told me", "Imagine you're in a meeting where...", "Every finance exec I know is asking about..."
    - These are FICTION. Remove them entirely.
 
-2. REMOVE any fabricated statistics or survey data
+3. REMOVE any fabricated statistics or survey data
    - Examples: "I interviewed 10 professionals", "50 executives said", "80% of fund managers agree"
    - If it's not from a real cited source (McKinsey, SEC, published research), it's fake.
 
-3. REMOVE vague attributions that hide fabrication
+4. REMOVE vague attributions that hide fabrication
    - "Industry leaders say", "Experts agree", "Many professionals have noticed"
    - Replace with: state as opinion ("I've noticed", "In my view") or remove
 
-4. KEEP only:
+5. KEEP only:
    - Real personal stories from the original prompt's PERSONAL STORY ASSETS
    - Opinions framed as opinions ("I think...", "In my experience...")
    - References to real, publicly known companies (Citadel, BlackRock, etc.) as examples, not as attributed quotes
    - Real published data with sources
 
-5. After removing fake content, tighten the post so it still flows naturally.
+6. After removing fake content, tighten the post so it still flows naturally.
    - Don't leave gaps or broken transitions
    - The post should read as if the fake content was never there
 
-6. If the entire post is built on a fake premise, strip the fake hook/scenario and rebuild around whatever real point it was trying to make.
+7. If the entire post is built on a fake premise, strip the fake hook/scenario and rebuild around whatever real point it was trying to make.
 
 OUTPUT: Return ONLY the cleaned post text. No commentary, no explanation.`
             },
