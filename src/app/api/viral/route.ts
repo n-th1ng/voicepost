@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { MIMO_API_KEY } from "@/lib/env";
 
-const VIRAL_SYSTEM_PROMPT = `You are a viral content strategist specializing in LinkedIn posts for finance executives.
+const VIRAL_SYSTEM_PROMPT = `You are a viral content strategist specializing in LinkedIn posts for M&A deal intelligence.
 
 Your job: Given a topic, generate 5 viral-worthy angles with hooks, explanations, and outlines.
 
-FINANCE ONLY - Never mention legal, law firms, lawyers, or anything legal-related.
+DEAL INTELLIGENCE ONLY - Never mention legal, law firms, lawyers, or anything legal-related.
 
 VIRAL HOOK PATTERNS THAT WORK:
 1. Contrarian Take - Challenge what everyone believes
@@ -22,7 +22,7 @@ VIRALITY FACTORS:
 - Makes people tag others ("@someone needs to see this")
 - Offers contrarian view to common belief
 - Specific and actionable (not generic)
-- Makes finance execs feel seen/understood
+- Makes deal makers and independent sponsors feel seen/understood
 - Creates FOMO or urgency
 
 OUTPUT FORMAT (JSON):
@@ -32,7 +32,7 @@ Return ONLY valid JSON, no markdown, no explanation:
     {
       "hook": "First line that stops the scroll",
       "angle": "2-3 sentence explanation of the angle and why it works",
-      "whyItWorks": "Psychology behind why this hooks finance execs",
+      "whyItWorks": "Psychology behind why this hooks deal makers",
       "outline": ["Hook", "Story/Setup", "Point 1", "Point 2", "CTA"],
       "viralityScore": 8
     }
@@ -44,8 +44,9 @@ Rules:
 - Each hook must be under 15 words
 - Virality score 1-10 based on debate potential, shareability, emotional response
 - Ideas must be REAL and AUTHENTIC - no fake statistics, no fabricated experiences
-- Focus on finance: fund managers, wealth managers, bank execs, CFOs, COOs
-- Keep hooks punchy, opinionated, human`;
+- Focus on deal intelligence: independent sponsors, fundless PE, small PE firms, family offices, deal makers
+- Keep hooks punchy, opinionated, human
+- NEVER use em dashes in any output - use commas, periods, or parentheses instead`;
 
 export async function POST(request: NextRequest) {
   try {
@@ -73,7 +74,12 @@ export async function POST(request: NextRequest) {
             { role: "system", content: VIRAL_SYSTEM_PROMPT },
             {
               role: "user",
-              content: `Generate 5 viral LinkedIn post ideas about: ${topic}\n\nTarget audience: Finance executives (fund managers, wealth managers, bank execs, CFOs).\nCompany: IntegrAlting (enterprise AI for finance).\n\nRemember: Finance ONLY. No legal. No fake experiences. No invented statistics.`,
+              content: `Generate 5 viral LinkedIn post ideas about: ${topic}
+
+Target audience: Deal makers and independent sponsors (fundless PE, small PE, family offices).
+Company: DeepLens AI (autonomous deal intelligence for M&A due diligence).
+
+Remember: Deal intelligence ONLY. No legal. No fake experiences. No invented statistics. NO EM DASHES - use commas or periods instead.`,
             },
           ],
           max_tokens: 1500,

@@ -95,9 +95,9 @@ function getMockViralData(topic: string): any {
   // Generate topic-relevant hooks dynamically
   const hooks = [
     {
-      excerpt: `Every finance executive is talking about ${topic}. Most are getting it wrong...`,
-      hook: `Every finance executive is talking about ${topic}. Most are getting it wrong.`,
-      author: "@finance_strategy",
+      excerpt: `Most people chasing ${topic} are missing the real edge. Here's what actually matters...`,
+      hook: `Most people chasing ${topic} are missing the real edge.`,
+      author: "@deal_intel",
       engagement: "High",
       whyItWorked: `Calls out the crowd chasing ${topic} without understanding it. Creates debate among those doing it right.`,
       viralityScore: 8,
@@ -131,13 +131,13 @@ function getMockViralData(topic: string): any {
       linkedinAngle: `What's the real story behind ${topic}? What's the piece that nobody's connecting? Share a perspective that challenges the hype without being negative.`
     },
     {
-      excerpt: `3 finance leaders told me the same thing about ${topic}. It changed how I think about it entirely...`,
-      hook: `3 finance leaders told me the same thing about ${topic}. It changed my thinking entirely.`,
-      author: "@bank_exec_tips",
+      excerpt: `The pattern I'm seeing with ${topic} is different from what the headlines suggest...`,
+      hook: `The pattern I'm seeing with ${topic} is different from what the headlines suggest.`,
+      author: "@deal_intel",
       engagement: "High",
-      whyItWorked: "Specific conversation count + insight revelation. Feels like insider knowledge being shared.",
+      whyItWorked: "Observation framing without fabricated social proof. Feels like insider analysis being shared.",
       viralityScore: 8,
-      linkedinAngle: `What have actual finance executives told you about ${topic} that surprised you? Real conversations beat manufactured stats. If you don't have those stories, write opinions instead.`
+      linkedinAngle: `Share your honest observation about ${topic}. What do you see that others miss? Frame it as insight, not performance.`
     },
   ];
   
@@ -151,14 +151,14 @@ function getMockViralData(topic: string): any {
         `Contrarian takes on ${topic} hype`,
       ],
       winningHooks: [
-        `Every finance executive is talking about ${topic}. Most are wrong...`,
+        `Most people chasing ${topic} are missing the real edge.`,
         `I spent [time] testing ${topic}. Here's what actually worked...`,
         `The gap between what firms say about ${topic} and what they do...`,
         `${topic} isn't what everyone thinks it is.`,
-        `3 finance leaders told me the same thing about ${topic}...`,
+        `The pattern I'm seeing with ${topic} is different from what the headlines suggest.`,
       ],
-      engagementPatterns: "Posts that challenge the crowd on trending topics get the most comments. Honest testing stories with timelines get the most saves. Insider conversations ('3 leaders told me') drive shares.",
-      contentGaps: `Most ${topic} content is surface-level take. What's missing: honest testing results, specific outcomes, contrarian takes backed by experience, real conversations with finance leaders.`,
+      engagementPatterns: "Posts that challenge the crowd on trending topics get the most comments. Honest testing stories with timelines get the most saves. Observation-based insights ('The pattern I'm seeing') drive shares without fabricated social proof.",
+      contentGaps: `Most ${topic} content is surface-level take. What's missing: honest testing results, specific outcomes, contrarian takes backed by experience, observation-based insights.`,
       recommendedAngles: [
         `Share what you actually learned testing ${topic} (with timeline and results)`,
         `Call out what everyone gets wrong about ${topic} without being negative`,
